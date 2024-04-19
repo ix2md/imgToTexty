@@ -1,7 +1,6 @@
 "use client";
 import Image from 'next/image';
 import React, { Suspense, useRef, useState } from 'react';
-import { createWorker } from 'tesseract.js';
 import toast, { Toaster } from 'react-hot-toast';
 import {
     Drawer,
@@ -85,7 +84,7 @@ export default function Inputfile() {
 
                 <div className=' group border p-5 pb-10 rounded-md mb-20 flex justify-center h-72 bg-inherit hover:bg-gray-400 hover:bg-clip-padding hover:backdrop-filter hover:backdrop-blur-sm hover:bg-opacity-10 hover:border hover:border-gray-100'>
                     <Suspense fallback={loadingJsx}>
-                        <Image className=' group-hover:border-blue-600 border-2 rounded-md border-gray-500' src={url} alt="Selected Image" />
+                        <Image width={500} height={300} className=' group-hover:border-blue-600 border-2 rounded-md border-gray-500' src={url} alt="Selected Image" />
                     </Suspense>
                 </div>
 
@@ -127,7 +126,7 @@ export default function Inputfile() {
                                     <Textarea value={texts} readOnly />
                                 </DrawerHeader>
                                 <DrawerFooter>
-                                    <Button onClick={() => copy(texts)}>Copy</Button>
+                                    <Button onClick={() => copy(texts.join('\n'))}>Copy</Button>
                                     <DrawerClose>
                                         <Button className=' w-full' variant="outline">Cancel</Button>
                                     </DrawerClose>
